@@ -1,38 +1,38 @@
 
+BUILD_DIR=src\\
 
+DEBUG=0
+
+OBJS=$(BUILD_DIR)env.obj      \
+     $(BUILD_DIR)envw.obj     \
+     $(BUILD_DIR)file.obj     \
+     $(BUILD_DIR)filew.obj    \
+     $(BUILD_DIR)mem.obj      \
+     $(BUILD_DIR)printf.obj   \
+     $(BUILD_DIR)printfw.obj  \
+     $(BUILD_DIR)printfsz.obj \
+     $(BUILD_DIR)rand.obj     \
+     $(BUILD_DIR)string.obj   \
+     $(BUILD_DIR)stringw.obj  \
+     $(BUILD_DIR)ep_cons.obj  \
+     $(BUILD_DIR)ep_consw.obj \
+     $(BUILD_DIR)ep_dll.obj   \
+     $(BUILD_DIR)ep_gui.obj   \
+     $(BUILD_DIR)ep_guiw.obj  \
+	 
 all: minicrt.lib
 
 clean:
-	if exist *.obj erase *.obj
+	@erase $(OBJS)
 	if exist *.lib erase *.lib
 	if exist *.pdb erase *.pdb
 	if exist *~ erase *~
 	if exist *.manifest erase *.manifest
 
-
-DEBUG=0
-
-OBJS=env.obj      \
-     envw.obj     \
-     file.obj     \
-     filew.obj    \
-     mem.obj      \
-     printf.obj   \
-     printfw.obj  \
-     printfsz.obj \
-     rand.obj     \
-     string.obj   \
-     stringw.obj  \
-     ep_cons.obj  \
-     ep_consw.obj \
-     ep_dll.obj   \
-     ep_gui.obj   \
-     ep_guiw.obj  \
-
 LIB=link.exe -lib
 LIB_NOLOGO=-nologo
 
-CFLAGS=-nologo -W3 -MT
+CFLAGS=-nologo -W3 -MT /I"include" /Fo"$(BUILD_DIR)"
 LDFLAGS=
 
 !IF $(DEBUG)==1

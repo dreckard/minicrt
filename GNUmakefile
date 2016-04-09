@@ -1,8 +1,9 @@
 
 all: libminicrt.a
 
-CFLAGS=-Os -fno-stack-protector
+CFLAGS=-Os -fno-stack-protector -Iinclude
 DEBUG=0
+VPATH=src
 
 ifeq ($(DEBUG),1)
 CFLAGS += -g
